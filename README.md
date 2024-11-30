@@ -1,5 +1,6 @@
 
-```markdown
+---
+
 # MindMash - Quiz App 🎮🧠
 
 Welcome to **MindMash**! The ultimate quiz app where you can test your knowledge and challenge your friends. 🚀
@@ -12,9 +13,9 @@ Check out the live version of **MindMash** here: [MindMash Live](https://mindmas
 
 ## Features 🏆
 
-- Interactive quiz  🎯
+- Interactive quiz 🎯
 - Real-time score tracking 📊
-- Fun and engaging UI with Light  mode 🌙
+- Fun and engaging UI with Light mode 🌙
 - Responsive and mobile-friendly design 📱
 
 ---
@@ -107,11 +108,5 @@ Feel free to reach out, and don’t forget to star ⭐ the repository if you lik
 - Website: [MindMash Live](https://mindmash.netlify.app/)
 
 Happy quizzing! 🎉🧠
-```
 
-### Key Sections:
-1. **Live Demo Link** – Included your link to **MindMash** on Netlify.
-2. **Cloning Instructions** – Provided the steps to clone, install dependencies, and run the project locally.
-3. **Deployment Instructions** – Detailed steps for deploying the app on Netlify.
-4. **Contributing** – Guidelines for contributing to the project.
-5. **License** – Mention of MIT License.
+---
