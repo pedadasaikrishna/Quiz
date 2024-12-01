@@ -88,14 +88,10 @@ const QuizPage = () => {
     setCorrectAnswers(updatedCorrect);
     setIncorrectAnswers(updatedIncorrect);
     setScore(updatedCorrect * 4); // +4 per correct answer
-    // console.log(score)
-
   };
 
   const handlePreviousQuestion = () => {
     if (currentQuestion > 0) setCurrentQuestion(currentQuestion - 1);
-    // console.log(score)
-
   };
 
   const handleNextQuestion = () => {
@@ -104,7 +100,6 @@ const QuizPage = () => {
     } else {
       setIsQuizCompleted(true);
       navigate('/results', { state: getQuizResults() });
-
     }
   };
 
@@ -121,7 +116,7 @@ const QuizPage = () => {
       </NavWrapper>
 
       <QuestionCard>
-      <QuestionNumber>{currentQuestion + 1}</QuestionNumber>
+        <QuestionNumber>{currentQuestion + 1}</QuestionNumber>
         <Question>{questions[currentQuestion].question}</Question>
         <OptionsWrapper>
           {questions[currentQuestion].options.map((option, index) => (
@@ -146,13 +141,15 @@ const QuizPage = () => {
     </QuizWrapper>
   );
 };
+
+// Styled Components
 const QuestionNumber = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: #ffffff;
   background: linear-gradient(135deg, #ff7eb3, #ff758c);
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -161,14 +158,11 @@ const QuestionNumber = styled.div`
   margin: 0 auto;
 
   @media (max-width: 768px) {
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
   }
 `;
-
-
-
 
 const QuizWrapper = styled.div`
   display: flex;
@@ -180,10 +174,15 @@ const QuizWrapper = styled.div`
   background-color: #eef2f7;
   color: #2b2b2b;
   animation: fadeIn 0.5s ease-in;
+  overflow: hidden;
 
   @media (max-width: 768px) {
     padding: 1rem;
     height: auto;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem;
   }
 `;
 
@@ -191,13 +190,14 @@ const NavWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
+  width: 100%;
   background-color: #ffffff;
   color: #4a4a4a;
   padding: 1rem 1.5rem;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 1.5rem;
+  max-width: 1200px;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -245,7 +245,7 @@ const QuestionCard = styled.div`
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-  width: 80%;
+  width: 90%;
   max-width: 800px;
   text-align: center;
 
@@ -255,22 +255,44 @@ const QuestionCard = styled.div`
   }
 `;
 
-
 const Question = styled.h2`
-  font-size: 2rem;
+  font-size: 2.2rem; /* Default font size for larger screens */
+  font-weight: 600; /* Normal weight for large screens */
   margin-bottom: 2rem;
-  color: #333;
-  line-height: 1.6; /* Improves spacing between lines */
-  text-align: justify; /* Ensures balanced alignment of text */
-  word-wrap: break-word; /* Prevents overflow issues */
-  word-break: break-word; /* Ensures long words break correctly */
-  max-width: 90%; /* Keeps the question text contained */
-  padding: 1rem; /* Adds space around the text */
+  color: #333; /* Dark color for high contrast */
+  line-height: 1.8; /* Increase line height for readability */
+  text-align: center; /* Center-align text */
+  word-wrap: break-word;
+  word-break: break-word;
+  max-width: 90%; /* Keeps text contained */
+  padding: 1.5rem; /* Adds space around the text */
+  background-color: #f9f9f9; /* Light background for readability */
+  border-radius: 8px; /* Rounded corners for a soft look */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (max-width: 1024px) {
+    font-size: 1.8rem; /* Slightly smaller font for medium screens */
+    font-weight: 500; /* Lighten the weight for medium screens */
+    margin-bottom: 1.8rem;
+    padding: 1.2rem; /* Reduce padding for medium screens */
+  }
 
   @media (max-width: 768px) {
-    font-size: 1.5rem; /* Scales font size for smaller screens */
+    font-size: 1.6rem; /* Smaller font size for tablets */
+    font-weight: 500; /* Light weight for better mobile readability */
     margin-bottom: 1.5rem;
-    line-height: 1.4;
+    line-height: 1.7; /* Slightly tighter line height for smaller screens */
+    padding: 1rem; /* Reduced padding for smaller screens */
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.4rem; /* Even smaller font size for mobile screens */
+    font-weight: 400; /* Light font weight for mobile */
+    margin-bottom: 1.2rem;
+    line-height: 1.6; /* Adjust line height for mobile screens */
+    padding: 0.8rem; /* Reduce padding further on mobile */
   }
 `;
 
@@ -363,6 +385,5 @@ const NextButton = styled.button`
     padding: 0.8rem 1.5rem;
   }
 `;
-
 
 export default QuizPage;

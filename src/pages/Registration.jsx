@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { FaList, FaPlay } from 'react-icons/fa';
-import '../reg.css'
+import '../reg.css';
+
 const Registration = () => {
   const [collegeId, setCollegeId] = useState('');
   const [name, setName] = useState('');
@@ -69,12 +70,10 @@ const Registration = () => {
           onChange={handleInputChange}
           required
         />
-        
         {error && <ErrorMessage>{error}</ErrorMessage>}
-        
         <ButtonWrapper>
           <RulesButton onClick={handleGoToRules}>
-            <FaList style={{ marginRight: '10px' }} /> Rules and Regulations
+            <FaList style={{ marginRight: '10px' }} /> Rules
           </RulesButton>
           <StartButton type="submit">
             <FaPlay style={{ marginRight: '10px' }} /> Start Quiz
@@ -94,6 +93,15 @@ const RegistrationWrapper = styled.div`
   height: 100vh;
   background-color: #f4f4f9;
   animation: fadeIn 1s ease-out;
+  padding: 1rem;
+
+  @media (max-width: 768px) {
+    padding: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+  }
 `;
 
 const Form = styled.form`
@@ -104,13 +112,28 @@ const Form = styled.form`
   text-align: center;
   width: 90%;
   max-width: 400px;
-  animation: slideIn 1s ease-out;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `;
 
 const Title = styled.h2`
   font-size: 2rem;
   color: #333;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.6rem;
+  }
 `;
 
 const Input = styled.input`
@@ -128,12 +151,30 @@ const Input = styled.input`
     outline: none;
     transform: scale(1.05);
   }
+
+  @media (max-width: 768px) {
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
 `;
 
 const ErrorMessage = styled.p`
   color: red;
   font-size: 0.9rem;
   margin-top: 0.5rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const ButtonWrapper = styled.div`
@@ -141,6 +182,12 @@ const ButtonWrapper = styled.div`
   justify-content: space-between;
   width: 100%;
   margin-top: 1rem;
+  gap: 0.5rem;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
 `;
 
 const RulesButton = styled.button`
@@ -153,10 +200,23 @@ const RulesButton = styled.button`
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
   transition: background-color 0.3s ease;
+  width: 48%;
 
   &:hover {
     background-color: #45a049;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.7rem 1.3rem;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
   }
 `;
 
@@ -170,9 +230,22 @@ const StartButton = styled.button`
   cursor: pointer;
   display: flex;
   align-items: center;
+  justify-content: center;
   transition: background-color 0.3s ease;
+  width: 48%;
 
   &:hover {
     background-color: #e53935;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.7rem 1.3rem;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
   }
 `;

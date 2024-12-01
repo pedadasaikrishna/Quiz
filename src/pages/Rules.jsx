@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { FaCheckCircle, FaArrowLeft } from 'react-icons/fa'; // Import icons from react-icons
+import { FaCheckCircle, FaArrowLeft } from 'react-icons/fa';
 
 const Rules = () => {
   const navigate = useNavigate();
@@ -13,9 +13,9 @@ const Rules = () => {
   return (
     <RulesWrapper>
       <RulesCard>
-        <Title>Quiz Rules and Regulations</Title>
+        <Title>Rules and Regulations</Title>
         <RuleList>
-        <RuleItem>
+          <RuleItem>
             <FaCheckCircle style={{ color: '#00C853', marginRight: '10px' }} />
             Each correct answer carries <MarkHighlight>4</MarkHighlight> marks.
           </RuleItem>
@@ -43,7 +43,6 @@ const Rules = () => {
             <FaCheckCircle style={{ color: '#00C853', marginRight: '10px' }} />
             Once you submit your answers, they cannot be changed.
           </RuleItem>
-
         </RuleList>
         <BestWish>All the best!</BestWish>
         <BackButton onClick={handleBack}>
@@ -56,6 +55,7 @@ const Rules = () => {
 
 export default Rules;
 
+// Styled Components
 const RulesWrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -77,12 +77,28 @@ const RulesCard = styled.div`
   width: 90%;
   max-width: 500px;
   text-align: center;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `;
 
 const Title = styled.h2`
   font-size: 2rem;
   color: #333;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.6rem;
+  }
 `;
 
 const RuleList = styled.ul`
@@ -90,29 +106,50 @@ const RuleList = styled.ul`
   color: #333;
   font-size: 1.2rem;
   margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
 `;
- 
+
 const RuleItem = styled.li`
   margin: 1rem 0;
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    margin: 0.8rem 0;
+  }
+
+  @media (max-width: 480px) {
+    margin: 0.6rem 0;
+  }
 `;
 
 const MarkHighlight = styled.h1`
   font-size: 2rem;
   color: #d32f2f;
   font-weight: bold;
-  display: inline; /* Makes it inline with the text */
+  display: inline;
   background: linear-gradient(45deg, #ff8a80, #d32f2f);
   border-radius: 6px;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  line-height: 1; /* Ensures no extra space above or below */
-  margin: 0; /* Removes any default margin */
-   margin-left: 5px;
-  margin-right: 5px;
-`;
+  line-height: 1;
+  margin: 0 5px;
 
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
+`;
 
 const BestWish = styled.span`
   display: block;
@@ -135,6 +172,14 @@ const BestWish = styled.span`
       background-position: 200%;
     }
   }
+
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const BackButton = styled.button`
@@ -154,5 +199,15 @@ const BackButton = styled.button`
 
   &:active {
     background-color: #6200ea;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
   }
 `;
