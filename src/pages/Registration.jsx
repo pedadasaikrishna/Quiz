@@ -9,6 +9,7 @@ const Registration = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
+  const [skill, setSkill] = useState("");
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -20,12 +21,15 @@ const Registration = () => {
     } else if (name === 'email') {
       setEmail(value);
     }
+    else if(name ==='skill'){
+      setSkill(value)
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!collegeId || !name || !email) {
+    if (!collegeId || !name || !email || !skill) {
       setError('All fields are required.');
     } else if (!/\S+@\S+\.\S+/.test(email)) {
       setError('Please enter a valid email address.');
@@ -34,6 +38,7 @@ const Registration = () => {
       localStorage.setItem('collegeId', collegeId);
       localStorage.setItem('name', name);
       localStorage.setItem('email', email);
+      localStorage.setItem('skill', skill);
       navigate('/quiz');
     }
   };
@@ -70,6 +75,37 @@ const Registration = () => {
           onChange={handleInputChange}
           required
         />
+<Dropdown
+  id="skills"
+  name="skill"
+  value={skill}
+  onChange={(e) => {
+    setSkill(e.target.value);  // Update the skill state
+    handleInputChange(e);     // Additional handler if needed
+  }}
+>
+  <Option value="" disabled>
+    Select a skill
+  </Option>
+  <Option value="Python">Python</Option>
+  <Option value="C">C</Option>
+  <Option value="Java">Java</Option>
+  <Option value="CPP">C++</Option>
+  <Option value="HTML_CSS" >
+    HTML & CSS
+  </Option>
+  <Option value="JavaScript" >
+    JavaScript
+  </Option>
+  <Option value="PHP" disabled>
+    PHP
+  </Option>
+  <Option value="Ruby" disabled>
+    Ruby
+  </Option>
+</Dropdown>
+
+
         {error && <ErrorMessage>{error}</ErrorMessage>}
         <ButtonWrapper>
           <RulesButton onClick={handleGoToRules}>
@@ -85,6 +121,44 @@ const Registration = () => {
 };
 
 export default Registration;
+const Dropdown = styled.select`
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  color: #333;
+  padding: 1rem;
+  margin: 1rem 0;
+  width: 99%;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+
+  &:focus {
+    outline: none;
+    // transform: scale(1.05);
+  }
+
+  // Responsive styles
+  @media (max-width: 768px) {
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+`;
+
+const Option = styled.option`
+  background-color: #f1f1f1;
+  color: #333;
+
+  &:disabled {
+    color: #999; /* Makes disabled option visible */
+    background-color: #e0e0e0; /* Light grey background for contrast */
+    font-style: italic; /* Optional: makes the text italic for emphasis */
+  }
+`;
 
 const RegistrationWrapper = styled.div`
   display: flex;
